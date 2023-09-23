@@ -1,20 +1,15 @@
-const validInput = document.querySelector("#validation-input");
-
-function validationInput() {
-    if (
-        validInput.dataset.length >= validInput.value.length &&
-        validInput.value.length > 0
-    ) {
-        validInput.classList.add("valid");
-        validInput.classList.remove("invalid");
-    } else if (validInput.dataset.length < validInput.value.length) {
-        validInput.classList.add("invalid");
-        validInput.classList.remove("valid");
-    } else if (validInput.value.length === 0) {
-        validInput.classList.remove("invalid");
-        validInput.classList.remove("valid");
-    }
-}
-
-validInput.addEventListener("blur", validationInput);
-validInput.addEventListener("input", validationInput);
+const textInput = document.querySelector('#validation-input')
+console.log(textInput.getAttribute('data-length'))
+textInput.addEventListener('blur', event => {
+	if (event.target.value.length == textInput.getAttribute('data-length')) {
+		textInput.classList.add('valid')
+		if (textInput.classList.contains('invalid')) {
+			textInput.classList.remove('invalid')
+		}
+	} else {
+		if (textInput.classList.contains('valid')) {
+			textInput.classList.remove('valid')
+		}
+		textInput.classList.add('invalid')
+	}
+})

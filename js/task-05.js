@@ -1,14 +1,10 @@
-const inputName = document.querySelector("#name-input");
-const outputName = document.querySelector("#name-output");
+const textInput = document.querySelector('#name-input')
+const output = document.querySelector('#name-output')
 
-updateName();
+textInput.addEventListener('input', event => {
+	output.textContent = event.target.value
 
-function updateName() {
-    if (inputName.value !== "") {
-        outputName.textContent = inputName.value;
-    } else {
-        outputName.textContent = "Anonymous";
-    }
-}
-
-inputName.addEventListener("input", updateName);
+	if (event.target.value === '') {
+		output.textContent = 'Anonymous'
+	}
+})
